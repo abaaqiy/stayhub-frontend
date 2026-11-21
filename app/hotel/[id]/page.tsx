@@ -55,7 +55,7 @@ function PropertyDetailsContent() {
   const fullDescription = `${hotel.description} This luxurious space is designed to provide maximum comfort during your stay, featuring premium linens, a smart TV, and a fully stocked minibar. Guests also have complimentary access to the rooftop pool and the on-site fitness center.`;
 
   return (
-    <div className="flex flex-col min-h-[100dvh] bg-[#EAF2F8] pb-28">
+    <div className="flex flex-col min-h-[100dvh] bg-[#EAF2F8] pb-0">
       
       <div className="flex items-center justify-between px-5 pt-12 pb-4">
         <button onClick={() => router.back()} className="active-press p-2.5 bg-transparent border border-gray-800 rounded-full hover:bg-gray-100 transition-colors">
@@ -133,8 +133,8 @@ function PropertyDetailsContent() {
         </p>
       </div>
 
-      {/* FIXED BUTTON LAYOUT */}
-      <div className="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-[400px] bg-[#EAF2F8] px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50">
+      {/* STICKY BUTTON LAYOUT (Matches Availability Page) */}
+      <div className="sticky bottom-0 w-full mt-auto bg-[#EAF2F8] px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50">
         <button onClick={handleCheckAvailability} className="active-press w-full bg-[#0B1A33] text-white font-semibold text-sm py-4 rounded-full shadow-lg hover:bg-gray-800 transition-colors">
           Check Availability
         </button>
