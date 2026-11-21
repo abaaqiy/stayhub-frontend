@@ -19,7 +19,7 @@ export default function BookingSummary() {
   const nights = Math.max(1, Math.round((checkOut.getTime() - checkIn.getTime()) / (1000 * 3600 * 24)));
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#EAF2F8] pb-28 mx-auto w-full max-w-lg shadow-2xl relative border-x border-gray-200">
+    <div className="flex flex-col min-h-[100dvh] bg-[#EAF2F8] pb-28 mx-auto w-full max-w-lg relative border-x border-gray-200">
       <div className="flex items-center px-5 pt-12 pb-6 relative">
         <button onClick={() => router.back()} className="active-press p-2.5 bg-transparent border border-gray-800 rounded-full hover:bg-gray-100 transition-colors z-10">
           <ArrowLeft className="w-5 h-5 text-gray-900" />
@@ -45,7 +45,8 @@ export default function BookingSummary() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full px-5 pb-8 pt-4 bg-[#EAF2F8]">
+      {/* FIXED BUTTON LAYOUT */}
+      <div className="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-lg bg-[#EAF2F8] px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50">
         <button onClick={() => router.push("/book/checkout")} className="active-press w-full bg-[#0B1A33] text-white font-semibold text-sm py-4 rounded-full shadow-lg hover:bg-gray-800 transition-colors">
           Reserve and continue to payment
         </button>

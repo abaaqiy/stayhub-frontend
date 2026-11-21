@@ -12,14 +12,13 @@ function PropertyDetailsContent() {
   const setHotel = useBookingStore((state) => state.setHotel);
   
   const [isFavorite, setIsFavorite] = useState(false);
-  // 1. Add state for the "Read More" functionality
   const [isExpanded, setIsExpanded] = useState(false);
 
   const hotel = hotelsData.find((h) => h.id === params.id);
 
   if (!hotel) {
     return (
-      <div className="flex h-screen items-center justify-center bg-[#EAF2F8]">
+      <div className="flex h-[100dvh] items-center justify-center bg-[#EAF2F8]">
         <p>Hotel not found.</p>
       </div>
     );
@@ -53,13 +52,11 @@ function PropertyDetailsContent() {
     }
   };
 
-  // The full description text (combining the mock data description with some extra text)
   const fullDescription = `${hotel.description} This luxurious space is designed to provide maximum comfort during your stay, featuring premium linens, a smart TV, and a fully stocked minibar. Guests also have complimentary access to the rooftop pool and the on-site fitness center.`;
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#EAF2F8] pb-24">
+    <div className="flex flex-col min-h-[100dvh] bg-[#EAF2F8] pb-28">
       
-      {/* Top Navigation Bar */}
       <div className="flex items-center justify-between px-5 pt-12 pb-4">
         <button onClick={() => router.back()} className="active-press p-2.5 bg-transparent border border-gray-800 rounded-full hover:bg-gray-100 transition-colors">
           <ArrowLeft className="w-5 h-5 text-gray-900" />
@@ -75,7 +72,6 @@ function PropertyDetailsContent() {
         </div>
       </div>
 
-      {/* Header Info */}
       <div className="px-5 mb-5">
         <h2 className="text-xl font-bold text-gray-900 mb-1">{hotel.name}</h2>
         <div className="flex items-center space-x-6 text-gray-700 text-sm mt-2">
@@ -84,19 +80,16 @@ function PropertyDetailsContent() {
         </div>
       </div>
 
-      {/* Main Image */}
       <div className="px-5 mb-5">
         <div className="w-full h-[220px] rounded-2xl overflow-hidden shadow-sm">
           <img src={hotel.image} alt={hotel.name} className="w-full h-full object-cover" />
         </div>
       </div>
 
-      {/* Price */}
       <div className="px-5 mb-5">
         <h3 className="text-lg font-bold text-gray-900">₦{hotel.pricePerNight.toLocaleString()}/night</h3>
       </div>
 
-      {/* Amenities Grid */}
       <div className="px-5 mb-6">
         <div className="grid grid-cols-4 gap-2.5">
           <div className="bg-[#2263A5] rounded-xl flex flex-col items-center justify-center py-3 px-2 shadow-sm">
@@ -118,9 +111,6 @@ function PropertyDetailsContent() {
         </div>
       </div>
 
-      {/* REMOVED THE CAROUSEL DOTS HERE */}
-
-      {/* Host / Info Section with Functional Read More */}
       <div className="px-5 mb-8">
         <div className="flex justify-between items-center mb-3">
           <div className="flex items-center space-x-3">
@@ -133,10 +123,7 @@ function PropertyDetailsContent() {
           </div>
         </div>
         <p className="text-gray-600 text-sm leading-relaxed">
-          {/* Display shortened text by default, full text when expanded */}
           {isExpanded ? fullDescription : `${fullDescription.substring(0, 115)}...`}
-          
-          {/* Toggle Button */}
           <button 
             onClick={() => setIsExpanded(!isExpanded)} 
             className="text-[#1E64B3] font-medium ml-1 hover:underline"
@@ -146,8 +133,8 @@ function PropertyDetailsContent() {
         </p>
       </div>
 
-      {/* Fixed Bottom Button */}
-      <div className="absolute bottom-0 left-0 w-full bg-[#EAF2F8] px-5 pb-8 pt-4">
+      {/* FIXED BUTTON LAYOUT */}
+      <div className="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-[400px] bg-[#EAF2F8] px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50">
         <button onClick={handleCheckAvailability} className="active-press w-full bg-[#0B1A33] text-white font-semibold text-sm py-4 rounded-full shadow-lg hover:bg-gray-800 transition-colors">
           Check Availability
         </button>
@@ -158,7 +145,7 @@ function PropertyDetailsContent() {
 
 export default function PropertyDetails() {
   return (
-    <Suspense fallback={<div className="flex h-screen items-center justify-center bg-[#EAF2F8]">Loading...</div>}>
+    <Suspense fallback={<div className="flex h-[100dvh] items-center justify-center bg-[#EAF2F8]">Loading...</div>}>
       <PropertyDetailsContent />
     </Suspense>
   );

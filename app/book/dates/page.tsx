@@ -22,7 +22,8 @@ function CalendarContent({ range, setRange }: { range: DateRange | undefined, se
           caption_label: "text-3xl font-serif text-[#0B1A33] mb-4 ml-2",
           nav: "hidden",
           weekday: "text-gray-400 font-normal text-xs w-full uppercase mb-2",
-          day: "h-10 w-10 font-normal hover:bg-gray-100 rounded-full transition-colors active-press",
+          day: "text-center text-sm p-0 focus-within:relative focus-within:z-20",
+          day_button: "h-10 w-10 font-normal hover:bg-gray-100 rounded-full transition-colors active-press",
           selected: "bg-[#8CA6C4] text-white hover:bg-[#7A96B5]",
           range_middle: "bg-[#EAF2F8] text-gray-900 rounded-none",
           range_start: "bg-[#8CA6C4] text-white rounded-l-full",
@@ -68,7 +69,7 @@ export default function DatePreferences() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#EAF2F8] pb-28 mx-auto w-full max-w-lg shadow-2xl relative border-x border-gray-200">
+    <div className="flex flex-col min-h-[100dvh] bg-[#EAF2F8] pb-28 mx-auto w-full max-w-lg relative border-x border-gray-200">
       
       <div className="flex items-center justify-between px-5 pt-12 pb-6">
         <button onClick={() => router.back()} className="active-press p-2.5 bg-transparent border border-gray-800 rounded-full hover:bg-gray-100 transition-colors">
@@ -131,7 +132,8 @@ export default function DatePreferences() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full px-5 pb-8 pt-4 bg-[#EAF2F8]">
+      {/* FIXED BUTTON LAYOUT */}
+      <div className="fixed bottom-0 left-0 right-0 mx-auto w-full max-w-lg bg-[#EAF2F8] px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50">
         <button onClick={handleContinue} className="active-press w-full bg-[#0B1A33] text-white font-semibold text-sm py-4 rounded-full shadow-lg hover:bg-gray-800 transition-colors">
           Book Now
         </button>
