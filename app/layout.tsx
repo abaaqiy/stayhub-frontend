@@ -22,11 +22,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      {/* Removed overflow-hidden from body */}
       <body 
         suppressHydrationWarning 
-        className={`${inter.className} bg-gray-800 flex justify-center min-h-[100dvh] overflow-hidden`}
+        className={`${inter.className} bg-gray-800 flex justify-center min-h-[100dvh]`}
       >
-        <main className="w-full max-w-[400px] bg-[#EAF2F8] min-h-[100dvh] relative shadow-2xl overflow-y-auto overflow-x-hidden flex flex-col">
+        {/* Main container allows scrolling */}
+        <main className="w-full max-w-[400px] bg-[#EAF2F8] h-[100dvh] relative shadow-2xl overflow-y-auto overflow-x-hidden flex flex-col">
           {children}
         </main>
       </body>
