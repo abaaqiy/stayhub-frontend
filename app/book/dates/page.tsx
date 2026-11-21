@@ -22,7 +22,8 @@ function CalendarContent({ range, setRange }: { range: DateRange | undefined, se
           caption_label: "text-3xl font-serif text-[#0B1A33] mb-4 ml-2",
           nav: "hidden",
           weekday: "text-gray-400 font-normal text-xs w-full uppercase mb-2",
-          day: "h-10 w-10 text-center text-sm p-0 font-normal hover:bg-gray-100 rounded-full transition-colors active-press focus-within:relative focus-within:z-20",
+          day: "text-center text-sm p-0 focus-within:relative focus-within:z-20",
+          day_button: "h-10 w-10 font-normal hover:bg-gray-100 rounded-full transition-colors active-press",
           selected: "bg-[#8CA6C4] text-white hover:bg-[#7A96B5]",
           range_middle: "bg-[#EAF2F8] text-gray-900 rounded-none",
           range_start: "bg-[#8CA6C4] text-white rounded-l-full",
@@ -36,7 +37,8 @@ function CalendarContent({ range, setRange }: { range: DateRange | undefined, se
 
 export default function DatePreferences() {
   const router = useRouter();
-  const { checkIn, checkOut, guests, setDates, setGuests, calculateTotal } = useBookingStore();
+  // 1. Pull the selected hotel from the Zustand store
+  const { hotel, checkIn, checkOut, guests, setDates, setGuests, calculateTotal } = useBookingStore();
   
   const [range, setRange] = useState<DateRange | undefined>(undefined);
 
@@ -82,7 +84,10 @@ export default function DatePreferences() {
 
       <div className="px-5 mb-6">
         <div className="flex items-center justify-between bg-white border border-gray-800 rounded-xl px-4 py-3 shadow-sm">
-          <span className="font-bold text-sm text-gray-900">₦90,000/night</span>
+          {/* 2. Render the dynamic price based on the clicked hotel */}
+          <span className="font-bold text-sm text-gray-900">
+            ₦{hotel ? hotel.pricePerNight.toLocaleString() : "90,000"}/night
+          </span>
           <div className="flex items-center space-x-4">
             <button onClick={() => handleGuestChange("decrement")} className="active-press text-gray-500 hover:text-gray-800"><Minus className="w-4 h-4" /></button>
             <span className="font-semibold text-sm w-4 text-center">{guests}</span>
@@ -131,7 +136,6 @@ export default function DatePreferences() {
         </div>
       </div>
 
-      {/* STICKY BUTTON LAYOUT (Matches Availability Page) */}
       <div className="sticky bottom-0 w-full mt-auto bg-[#EAF2F8] px-5 pb-[calc(2rem+env(safe-area-inset-bottom))] pt-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50">
         <button onClick={handleContinue} className="active-press w-full bg-[#0B1A33] text-white font-semibold text-sm py-4 rounded-full shadow-lg hover:bg-gray-800 transition-colors">
           Book Now
