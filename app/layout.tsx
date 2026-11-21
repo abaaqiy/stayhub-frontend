@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -7,11 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "StayHub",
   description: "Book your desired luxury room seamlessly",
-  icons: {
-    icon: "/logo.png",         // Standard browser icon
-    shortcut: "/logo.png",     // Older browsers
-    apple: "/logo.png",        // Apple devices
-  },
+  // REMOVE the icons block from here. Let Next.js handle it via app/icon.png
 };
 
 export default function RootLayout({
