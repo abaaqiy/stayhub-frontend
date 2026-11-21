@@ -9,7 +9,7 @@ export default function SplashScreen() {
       <div className="flex-1 flex items-center justify-center w-full">
         <div className="relative w-[85%] h-[350px]">
           <Image
-            src="/logo.jpeg" 
+            src="/logo.png" 
             alt="StayHub Logo"
             fill
             className="object-contain"
