@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark: #0B1A33;
+  --color-brand-lightBg: #EAF2F8;
+  --color-brand-blue: #1E64B3;
+  --color-brand-cardBlue: #2263A5;
+}
+
+/* Global Click Effect */
+.active-press {
+  transition: transform 0.1s ease-in-out;
+}
+.active-press:active {
+  transform: scale(0.95); /* Slightly less aggressive scale for whole cards */
+}
+button.active-press:active {
+  transform: scale(0.92); /* More aggressive scale for small buttons */
+}
